@@ -25,7 +25,7 @@ database_id = "c379a453-ccdc-4b00-a3e0-e620a5656517"
 # KV Namespace for sessions/cache
 [[kv_namespaces]]
 binding = "CACHE"
-id = "your-kv-namespace-id"
+id = "68ad2c82a4fb4f6889413e4727a04d9f"
 preview_id = "68ad2c82a4fb4f6889413e4727a04d9f"
 
 # Environment variables

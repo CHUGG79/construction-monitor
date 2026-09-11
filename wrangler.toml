@@ -20,13 +20,13 @@ preview_bucket_name = "construction-monitor-uploads-preview"
 [[d1_databases]]
 binding = "DB"
 database_name = "construction-monitor-db"
-database_id = "your-database-id"
+database_id = "c379a453-ccdc-4b00-a3e0-e620a5656517"
 
 # KV Namespace for sessions/cache
 [[kv_namespaces]]
 binding = "CACHE"
 id = "your-kv-namespace-id"
-preview_id = "your-kv-namespace-preview-id"
+preview_id = "68ad2c82a4fb4f6889413e4727a04d9f"
 
 # Environment variables
 [env.production.vars]

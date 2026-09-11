@@ -3,6 +3,9 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './App.css';
 
+// API URL - Change this to your Cloudflare Workers URL
+const API_URL = 'https://construction-monitor-api.office-2af.workers.dev';
+
 // Icons fix for Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -91,8 +94,7 @@ export default function App() {
       formData.append('file', file);
 
       try {
-        // Replace with your backend URL
-        const response = await fetch('http://localhost:5000/api/upload', {
+        const response = await fetch(`${API_URL}/api/upload`, {
           method: 'POST',
           body: formData
         });
@@ -190,7 +192,7 @@ export default function App() {
   // Download file
   const handleDownload = async (fileId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/download/${fileId}`);
+      const response = await fetch(`${API_URL}/api/download/${fileId}`);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -208,7 +210,7 @@ export default function App() {
     if (!window.confirm('Delete this file?')) return;
 
     try {
-      await fetch(`http://localhost:5000/api/delete/${fileId}`, { method: 'DELETE' });
+      await fetch(`${API_URL}/api/delete/${fileId}`, { method: 'DELETE' });
       setFiles(files.filter(f => f.id !== fileId));
       setActiveFile(null);
     } catch (error) {

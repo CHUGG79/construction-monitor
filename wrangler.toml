@@ -1,0 +1,40 @@
+name = "construction-monitor-api"
+type = "service"
+main = "src/index.js"
+compatibility_date = "2024-09-10"
+
+# Environment bindings
+[env.production]
+name = "construction-monitor-api-prod"
+routes = [
+  { pattern = "api.yourdomain.com/api/*", zone_name = "yourdomain.com" }
+]
+
+# R2 Bucket for file storage
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "construction-monitor-uploads"
+preview_bucket_name = "construction-monitor-uploads-preview"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "construction-monitor-db"
+database_id = "your-database-id"
+
+# KV Namespace for sessions/cache
+[[kv_namespaces]]
+binding = "CACHE"
+id = "your-kv-namespace-id"
+preview_id = "your-kv-namespace-preview-id"
+
+# Environment variables
+[env.production.vars]
+ENVIRONMENT = "production"
+CORS_ORIGIN = "https://yourdomain.com"
+MAX_FILE_SIZE = "536870912"  # 500MB
+
+[env.development.vars]
+ENVIRONMENT = "development"
+CORS_ORIGIN = "http://localhost:5173"
+MAX_FILE_SIZE = "536870912"
